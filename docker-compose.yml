@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  queryservice:
+    container_name: query-service
+    build: .
+    tty: true
+    volumes:
+      - ./app:/go/src/app
+    ports:
+      - 8083:8083
+    networks:
+      - external
+networks:
+  external:
+    name: mysql_replication_sample-network
+    external: true

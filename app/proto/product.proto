@@ -1,0 +1,59 @@
+// バージョン3を利用する
+syntax = "proto3";
+
+// 生成コードの格納先パッケージを指定する
+option go_package = "/application/pb";
+
+// error.protoのインポート
+import "proto/error.proto";
+
+// パッケージの宣言
+package proto;
+
+//*****
+// パラメータメッセージの定義
+//*****
+message ProductParam {
+    optional string id      = 1; // 商品Id
+    optional string keyword = 2; // キーワード
+}
+
+//*****
+// 商品検索結果メッセージの定義   
+//*****
+message Product{
+    string id       = 1;    // 商品Id
+    string name     = 2;    // 商品名
+    int32  price    = 3;    // 単価
+}
+
+//*****
+// 検索結果メッセージの定義
+//*****
+message ProductResult{
+    // エラーか検索結果のいずれかを返す
+    oneof result {
+        Product product = 1;   // 検索結果 
+        Error   error   = 2;   // 検索エラー
+    }
+}
+
+//*****
+// 商品一覧メッセージの定義
+//*****
+message ProductsResult {
+    repeated Product    products = 1; // 一覧
+    optional Error      error    = 2; // エラー
+}
+
+//*****
+// 商品サービスの定義
+//*****
+service ProductService{
+    // すべての商品を取得して返す
+    rpc List(ProductParam)   returns (ProductsResult);
+    // 指定されたIDの商品を取得して返す
+    rpc ById(ProductParam)    returns (ProductResult);
+    // 指定されたキーワードの商品を取得して返す
+    rpc ByKeyword(ProductParam) returns (ProductsResult);
+}

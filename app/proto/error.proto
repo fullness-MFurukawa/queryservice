@@ -1,0 +1,15 @@
+// バージョン3を利用する
+syntax = "proto3";
+
+// 生成コードの格納先パッケージを指定する
+option go_package = "/application/pb";
+
+// パッケージの宣言
+package proto;
+
+// *****
+// エラーメッセージの定義
+// *****
+message Error{
+    string message  = 1;
+}
