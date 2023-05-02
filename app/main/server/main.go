@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
+/*
+gRPCサーバーの生成と起動
+*/
 func main() {
-	fmt.Println("server!!!")
+	fmt.Println("server!!")
 }

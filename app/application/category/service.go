@@ -20,8 +20,8 @@ type CategoryService struct {
 /*
 すべてのカテゴリを取得して返す
 */
-func (svr *CategoryService) List(ctx context.Context, param *pb.CategoryParam) (*pb.CategoriesResult, error) {
-	categories, err := svr.rep.FindAll()
+func (srv *CategoryService) List(ctx context.Context, param *pb.CategoryParam) (*pb.CategoriesResult, error) {
+	categories, err := srv.rep.FindAll()
 	if err != nil {
 		return &pb.CategoriesResult{Error: &pb.Error{Message: err.Error()}, Categories: nil}, nil
 	}
@@ -35,8 +35,8 @@ func (svr *CategoryService) List(ctx context.Context, param *pb.CategoryParam) (
 /*
 指定されたIDのカテゴリを取得して返す
 */
-func (svr *CategoryService) ById(ctx context.Context, param *pb.CategoryParam) (*pb.CategoryResult, error) {
-	category, err := svr.rep.FindById(param.GetId())
+func (srv *CategoryService) ById(ctx context.Context, param *pb.CategoryParam) (*pb.CategoryResult, error) {
+	category, err := srv.rep.FindById(param.GetId())
 	if err != nil {
 		return &pb.CategoryResult{Result: &pb.CategoryResult_Error{Error: &pb.Error{Message: err.Error()}}}, nil
 	}
