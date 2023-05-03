@@ -1,0 +1,9 @@
+grpcurl -plaintext localhost:8083 list
+grpcurl -plaintext localhost:8083 list proto.CategoryService
+grpcurl -plaintext localhost:8083 proto.CategoryService.List
+grpcurl -plaintext -d '{"id": "b1524011-b6af-417e-8bf2-f449dd58b5c0"}' localhost:8083 proto.CategoryService.ById
+grpcurl -plaintext -d '{"id": "b1524011-b6af-417e-8bf2-f449dd58b5c1"}' localhost:8083 proto.CategoryService.ById
+
+grpcurl -plaintext localhost:8083 proto.ProductService.List
+grpcurl -plaintext -d '{"keyword": "ペン"}' localhost:8085 proto.ProductService.ByKeyword
+grpcurl -plaintext -d '{"id": "ac413f22-0cf1-490a-9635-7e9ca810e544"}' localhost:8085 proto.ProductService.ById

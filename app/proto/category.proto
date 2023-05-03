@@ -47,7 +47,7 @@ message CategoriesResult {
 // *****
 // カテゴリサービスの定義
 // *****
-service CategtoryService {
+service CategoryService {
     // すべてのカテゴリを取得して返す
     rpc List(CategoryParam)   returns (CategoriesResult);
     // 指定されたIDのカテゴリを取得して返す

@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"queryservice/apperror"
 	"time"
 
 	"gorm.io/driver/mysql"
@@ -22,7 +23,7 @@ func (conn *GORMConnector) Open() (*gorm.DB, error) {
 	// データベース接続
 	db, err := gorm.Open(mysql.Open(url), &gorm.Config{})
 	if err != nil {
-		return nil, err
+		return nil, apperror.NewInternalError(err)
 	}
 	// 接続プールを取得して設定する
 	pool, err := db.DB()

@@ -59,7 +59,7 @@ func (svr *ProductService) ByKeyword(ctx context.Context, param *pb.ProductParam
 	}
 	if len(products) == 0 {
 		// エラーを生成する
-		err := apperror.NewAppError("404", fmt.Sprintf("id[%s]に該当する商品が見つかりませんでした。", param.GetId()))
+		err := apperror.NewAppError("404", fmt.Sprintf("[%s]を含む商品は見つかりませんでした。", param.GetKeyword()))
 		return &pb.ProductsResult{Error: &pb.Error{Message: err.Error()}, Products: nil}, nil
 	}
 	results := make([]*pb.Product, 0, len(products))

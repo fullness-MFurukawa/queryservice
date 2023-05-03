@@ -23,130 +23,130 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	CategtoryService_List_FullMethodName = "/proto.CategtoryService/List"
-	CategtoryService_ById_FullMethodName = "/proto.CategtoryService/ById"
+	CategoryService_List_FullMethodName = "/proto.CategoryService/List"
+	CategoryService_ById_FullMethodName = "/proto.CategoryService/ById"
 )
 
-// CategtoryServiceClient is the client API for CategtoryService service.
+// CategoryServiceClient is the client API for CategoryService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type CategtoryServiceClient interface {
+type CategoryServiceClient interface {
 	// すべてのカテゴリを取得して返す
 	List(ctx context.Context, in *CategoryParam, opts ...grpc.CallOption) (*CategoriesResult, error)
 	// 指定されたIDのカテゴリを取得して返す
 	ById(ctx context.Context, in *CategoryParam, opts ...grpc.CallOption) (*CategoryResult, error)
 }
 
-type categtoryServiceClient struct {
+type categoryServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewCategtoryServiceClient(cc grpc.ClientConnInterface) CategtoryServiceClient {
-	return &categtoryServiceClient{cc}
+func NewCategoryServiceClient(cc grpc.ClientConnInterface) CategoryServiceClient {
+	return &categoryServiceClient{cc}
 }
 
-func (c *categtoryServiceClient) List(ctx context.Context, in *CategoryParam, opts ...grpc.CallOption) (*CategoriesResult, error) {
+func (c *categoryServiceClient) List(ctx context.Context, in *CategoryParam, opts ...grpc.CallOption) (*CategoriesResult, error) {
 	out := new(CategoriesResult)
-	err := c.cc.Invoke(ctx, CategtoryService_List_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, CategoryService_List_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *categtoryServiceClient) ById(ctx context.Context, in *CategoryParam, opts ...grpc.CallOption) (*CategoryResult, error) {
+func (c *categoryServiceClient) ById(ctx context.Context, in *CategoryParam, opts ...grpc.CallOption) (*CategoryResult, error) {
 	out := new(CategoryResult)
-	err := c.cc.Invoke(ctx, CategtoryService_ById_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, CategoryService_ById_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// CategtoryServiceServer is the server API for CategtoryService service.
-// All implementations must embed UnimplementedCategtoryServiceServer
+// CategoryServiceServer is the server API for CategoryService service.
+// All implementations must embed UnimplementedCategoryServiceServer
 // for forward compatibility
-type CategtoryServiceServer interface {
+type CategoryServiceServer interface {
 	// すべてのカテゴリを取得して返す
 	List(context.Context, *CategoryParam) (*CategoriesResult, error)
 	// 指定されたIDのカテゴリを取得して返す
 	ById(context.Context, *CategoryParam) (*CategoryResult, error)
-	mustEmbedUnimplementedCategtoryServiceServer()
+	mustEmbedUnimplementedCategoryServiceServer()
 }
 
-// UnimplementedCategtoryServiceServer must be embedded to have forward compatible implementations.
-type UnimplementedCategtoryServiceServer struct {
+// UnimplementedCategoryServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedCategoryServiceServer struct {
 }
 
-func (UnimplementedCategtoryServiceServer) List(context.Context, *CategoryParam) (*CategoriesResult, error) {
+func (UnimplementedCategoryServiceServer) List(context.Context, *CategoryParam) (*CategoriesResult, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (UnimplementedCategtoryServiceServer) ById(context.Context, *CategoryParam) (*CategoryResult, error) {
+func (UnimplementedCategoryServiceServer) ById(context.Context, *CategoryParam) (*CategoryResult, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ById not implemented")
 }
-func (UnimplementedCategtoryServiceServer) mustEmbedUnimplementedCategtoryServiceServer() {}
+func (UnimplementedCategoryServiceServer) mustEmbedUnimplementedCategoryServiceServer() {}
 
-// UnsafeCategtoryServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to CategtoryServiceServer will
+// UnsafeCategoryServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CategoryServiceServer will
 // result in compilation errors.
-type UnsafeCategtoryServiceServer interface {
-	mustEmbedUnimplementedCategtoryServiceServer()
+type UnsafeCategoryServiceServer interface {
+	mustEmbedUnimplementedCategoryServiceServer()
 }
 
-func RegisterCategtoryServiceServer(s grpc.ServiceRegistrar, srv CategtoryServiceServer) {
-	s.RegisterService(&CategtoryService_ServiceDesc, srv)
+func RegisterCategoryServiceServer(s grpc.ServiceRegistrar, srv CategoryServiceServer) {
+	s.RegisterService(&CategoryService_ServiceDesc, srv)
 }
 
-func _CategtoryService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CategoryService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CategoryParam)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CategtoryServiceServer).List(ctx, in)
+		return srv.(CategoryServiceServer).List(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CategtoryService_List_FullMethodName,
+		FullMethod: CategoryService_List_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CategtoryServiceServer).List(ctx, req.(*CategoryParam))
+		return srv.(CategoryServiceServer).List(ctx, req.(*CategoryParam))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CategtoryService_ById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CategoryService_ById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CategoryParam)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CategtoryServiceServer).ById(ctx, in)
+		return srv.(CategoryServiceServer).ById(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CategtoryService_ById_FullMethodName,
+		FullMethod: CategoryService_ById_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CategtoryServiceServer).ById(ctx, req.(*CategoryParam))
+		return srv.(CategoryServiceServer).ById(ctx, req.(*CategoryParam))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// CategtoryService_ServiceDesc is the grpc.ServiceDesc for CategtoryService service.
+// CategoryService_ServiceDesc is the grpc.ServiceDesc for CategoryService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var CategtoryService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "proto.CategtoryService",
-	HandlerType: (*CategtoryServiceServer)(nil),
+var CategoryService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "proto.CategoryService",
+	HandlerType: (*CategoryServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "List",
-			Handler:    _CategtoryService_List_Handler,
+			Handler:    _CategoryService_List_Handler,
 		},
 		{
 			MethodName: "ById",
-			Handler:    _CategtoryService_ById_Handler,
+			Handler:    _CategoryService_ById_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

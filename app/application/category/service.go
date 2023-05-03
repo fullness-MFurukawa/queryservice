@@ -14,7 +14,7 @@ import (
 type CategoryService struct {
 	rep repository.CategoryRepository
 	// 生成したUnimplementedCategtoryServiceServerを埋め込む
-	pb.UnimplementedCategtoryServiceServer
+	pb.UnimplementedCategoryServiceServer
 }
 
 /*
