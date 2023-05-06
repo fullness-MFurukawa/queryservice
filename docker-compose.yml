@@ -12,5 +12,5 @@ services:
       - external
 networks:
   external:
-    name: mysql_replication_sample-network
+    name: grpc_sampledb_sample_net
     external: true
