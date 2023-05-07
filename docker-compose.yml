@@ -12,5 +12,4 @@ services:
       - external
 networks:
   external:
-    name: grpc_sampledb_sample_net
-    external: true
+    name: grpc_sampledb_net
