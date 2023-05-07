@@ -18,6 +18,7 @@ type GORMConnector struct{}
 データベース接続結果を返す
 */
 func (conn *GORMConnector) Open() (*gorm.DB, error) {
+
 	// データベース接続URL
 	url := "root:password@tcp(query_db:3307)/sample_db?charset=utf8mb4&parseTime=True&loc=Local"
 	// データベース接続
