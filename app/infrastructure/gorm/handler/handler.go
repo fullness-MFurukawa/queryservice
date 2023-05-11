@@ -20,7 +20,7 @@ type GORMConnector struct{}
 func (conn *GORMConnector) Open() (*gorm.DB, error) {
 
 	// データベース接続URL
-	url := "root:password@tcp(query_db:3307)/sample_db?charset=utf8mb4&parseTime=True&loc=Local"
+	url := "root:password@tcp(query_db:3306)/sample_db?charset=utf8mb4&parseTime=True&loc=Local"
 	// データベース接続
 	db, err := gorm.Open(mysql.Open(url), &gorm.Config{})
 	if err != nil {
