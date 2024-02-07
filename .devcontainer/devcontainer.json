@@ -1,0 +1,20 @@
+{
+    "name": "SampleProgram QueryService" ,
+    "dockerComposeFile":[
+        "../docker-compose.yml"
+    ],
+    "service":"queryservice",
+    "workspaceFolder": "/go/src/query",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "golang.go"       
+            ],
+            "settings": {
+                "go.gopath": "/go" ,
+                "go.inferGopath": true ,
+                "go.useLanguageServer": true
+            }
+        }
+    }
+}
